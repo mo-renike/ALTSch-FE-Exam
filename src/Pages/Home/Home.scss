@@ -1,0 +1,32 @@
+.home {
+  background: url("./bg.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+
+  &__text {
+    width: auto;
+    z-index: 2;
+    color: var(--bg-color);
+
+    h1 {
+      font-size: 3.5rem;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+  }
+}

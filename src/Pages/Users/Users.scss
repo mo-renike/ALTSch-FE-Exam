@@ -1,0 +1,94 @@
+.users {
+  padding: 2rem;
+  margin-top: 2rem;
+  &__nav {
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+    &-links {
+      display: flex;
+      align-items: center;
+      > * {
+        margin: 0 10px;
+        color: var(--accent-color);
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: all 0.5s ease-in-out;
+        border: 1px solid transparent;
+        &:hover {
+          color: var(--accent-color);
+        }
+      }
+    }
+    &-search {
+      input {
+        padding: 0.3rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+        outline: none;
+        &:focus {
+          border: 1px solid var(--accent-color);
+        }
+      }
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    &_item {
+      display: grid;
+      padding: 1rem;
+      grid-template-columns: 32% 64%;
+      grid-gap: 2%;
+      border: 1px solid #c3c3c3;
+      box-shadow: 2px 2px 2px #dddddd;
+      border-radius: 10px;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.5s ease;
+      &:hover {
+        box-shadow: 4px 4px 4px #dddddd;
+      }
+      &-img {
+        overflow: hidden;
+        border-radius: 40%;
+        img {
+          border-radius: inherit;
+          transition: all 0.5s ease;
+          cursor: pointer;
+          object-fit: cover;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+      &-dets {
+        p {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+  &__pagination {
+    margin: 1rem 0;
+    .prev,
+    .next {
+      padding: 0.4rem 1rem;
+    }
+    .button {
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--accent-color);
+      border-radius: 5px;
+      color: var(--accent-color);
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      &:hover {
+        background-color: var(--accent-color);
+        color: var(--dark-bg);
+      }
+    }
+  }
+}

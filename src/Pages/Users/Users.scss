@@ -1,13 +1,16 @@
 .users {
   padding: 2rem;
   margin-top: 2rem;
+
   &__nav {
     display: flex;
     margin: 1rem 0;
     align-items: center;
+
     &-links {
       display: flex;
       align-items: center;
+
       > * {
         margin: 0 10px;
         color: var(--accent-color);
@@ -15,17 +18,20 @@
         letter-spacing: 1px;
         transition: all 0.5s ease-in-out;
         border: 1px solid transparent;
+
         &:hover {
           color: var(--accent-color);
         }
       }
     }
+
     &-search {
       input {
         padding: 0.3rem;
         border: 1px solid var(--accent-color);
         border-radius: 5px;
         outline: none;
+
         &:focus {
           border: 1px solid var(--accent-color);
         }
@@ -37,57 +43,85 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
+
     &_item {
       display: grid;
       padding: 1rem;
       grid-template-columns: 32% 64%;
       grid-gap: 2%;
-      border: 1px solid #c3c3c3;
-      box-shadow: 2px 2px 2px #dddddd;
+      border: 1px solid #080808;
+      box-shadow: 1px 1px 1px #080808;
       border-radius: 10px;
       align-items: center;
       cursor: pointer;
       transition: 0.5s ease;
-      &:hover {
-        box-shadow: 4px 4px 4px #dddddd;
+
+      @media screen and (max-width: 414px) {
+        display: flex;
+        flex-direction: column;
       }
+
+      &:hover {
+        box-shadow: 4px 4px 5px #080808;
+      }
+
       &-img {
         overflow: hidden;
         border-radius: 40%;
+
         img {
           border-radius: inherit;
           transition: all 0.5s ease;
           cursor: pointer;
           object-fit: cover;
+
           &:hover {
             transform: scale(1.2);
           }
         }
       }
+
       &-dets {
         p {
           text-transform: capitalize;
         }
       }
     }
+
+    @media screen and (max-width: 1280px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 414px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
+
   &__pagination {
     margin: 1rem 0;
+    text-align: center;
+
     .prev,
     .next {
       padding: 0.4rem 1rem;
+      border-radius: 5px;
     }
+
     .button {
       padding: 0.4rem 1rem;
-      border: 1px solid var(--accent-color);
+      border: 1px solid var(--dark-bg);
       border-radius: 5px;
-      color: var(--accent-color);
+      color: var(--dark-bg);
       font-weight: bold;
       cursor: pointer;
       transition: all 0.5s ease;
+
       &:hover {
         background-color: var(--accent-color);
         color: var(--dark-bg);
+      }
+      &.active {
+        background-color: var(--accent-color);
       }
     }
   }

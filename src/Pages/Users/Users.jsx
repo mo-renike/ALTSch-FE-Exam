@@ -17,7 +17,7 @@ const Users = () => {
       setUsers(data.results);
     }
     fetchData();
-    console.log(users);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,7 +27,8 @@ const Users = () => {
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-  console.log(currentUsers);
+
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -43,6 +44,7 @@ const Users = () => {
 
   return (
     <div className="users">
+      
       <div className="users__nav">
         <nav className="users__nav-links">
           <Link to="/users/men">

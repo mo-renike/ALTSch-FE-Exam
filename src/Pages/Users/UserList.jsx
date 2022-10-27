@@ -18,11 +18,10 @@ const UserList = ({ currentUsers }) => {
                                 </h3>
                                 <p>
                                     {user.gender}, {user.dob.age}
-                                </p>{" "}
+                                </p>
                                 <p>{user.phone}</p>
                                 <p>
-                                    {" "}
-                                    {user.location.city}, {user.location.country}{" "}
+                                    {user.location.city}, {user.location.country}
                                 </p>
                                 <p>{user.email}</p>
                             </div>

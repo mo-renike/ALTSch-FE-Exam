@@ -1,27 +1,22 @@
 .users {
   padding: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 
   &__nav {
     display: flex;
     margin: 1rem 0;
     align-items: center;
 
-    &-links {
-      display: flex;
-      align-items: center;
+    > * {
+      margin: 0 10px;
+      color: var(--accent-color);
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.5s ease-in-out;
+      border: 1px solid transparent;
 
-      > * {
-        margin: 0 10px;
+      &:hover {
         color: var(--accent-color);
-        font-weight: bold;
-        letter-spacing: 1px;
-        transition: all 0.5s ease-in-out;
-        border: 1px solid transparent;
-
-        &:hover {
-          color: var(--accent-color);
-        }
       }
     }
 

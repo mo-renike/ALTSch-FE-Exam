@@ -1,5 +1,7 @@
 // import React, { Component } from 'react'
 
+import { Helmet } from "react-helmet-async";
+
 // export class ErrorBoundary extends Component {
 //     constructor(props) {
 //         super(props);
@@ -24,6 +26,7 @@
 
 // export default ErrorBoundary
 
+
 export function ErrorFallback({ error, resetErrorBoundary }) {
   return (
     <div
@@ -38,9 +41,12 @@ export function ErrorFallback({ error, resetErrorBoundary }) {
       }}
       role="alert"
     >
+      <Helmet >
+        <title>Something went wrong</title>
+      </Helmet>
       <h1>Something went wrong:</h1>
       <p style={{ color: "red" }}>{error.message}</p>
-      <button style={{ width: "fit-content" }} className="btn" onClick={resetErrorBoundary}>Try again</button>
+      <button style={{ width: "fit-content" }} className="button" onClick={resetErrorBoundary}>Try again</button>
     </div>
   );
 }

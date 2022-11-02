@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import "../../Pages/Repos/Repos.scss";
 
-const Pagination = ({ currentPage, paginate, pageNumbers, users, usersPerPage }) => {
+const Pagination = ({ currentPage, paginate, pageNumbers, repos, reposPerPage }) => {
     return (
-        <div className="users__pagination">
+        <div className="repos__pagination">
             {/* pagination with prev and next buttons */}
             <button
                 onClick={() => paginate(currentPage - 1)}
@@ -23,7 +24,7 @@ const Pagination = ({ currentPage, paginate, pageNumbers, users, usersPerPage })
             ))}
             <button
                 onClick={() => paginate(currentPage + 1)}
-                disabled={currentPage === Math.ceil(users.length / usersPerPage)}
+                disabled={currentPage === Math.ceil(repos.length / reposPerPage)}
                 className="next"
             >
                 Next

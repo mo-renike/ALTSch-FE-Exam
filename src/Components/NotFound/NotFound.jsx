@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import error from "./R.png";
+import "../../Pages/Repos/Repos.scss";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
     const containerStle = {
@@ -19,9 +21,12 @@ const NotFound = () => {
         <div
             style={containerStle}
         >
+            <Helmet>
+                <title>Page Not Found</title>
+            </Helmet>
             <img src={error} style={imgStyle} alt="Not found" />
-            <h3>Are you lost?</h3>
-            <Link className="btn" to="/" >Go back home</Link>
+            <h2>Are you lost?</h2> <br />
+            <Link className="button" to="/" >Go back home</Link>
         </div>
     );
 };

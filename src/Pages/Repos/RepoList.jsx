@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { AiOutlineStar } from "react-icons/ai";
 import "./Repos.scss";
 
@@ -6,7 +6,7 @@ import "./Repos.scss";
 const RepoList = ({ repo }) => {
     return (
         <a
-            href={`/${repo.name}`}
+            href={`/repo/${repo.name}`}
             className="repos__list-item"
             key={repo.id}
         >
@@ -42,4 +42,4 @@ const RepoList = ({ repo }) => {
     )
 }
 
-export default RepoList
+export default RepoList;

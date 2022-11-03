@@ -27,7 +27,7 @@ const Details = () => {
             setDetails(data);
         };
         fetchDetails();
-        console.log(details);
+        //console.log(details);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -36,9 +36,9 @@ const Details = () => {
     const toggleSidebar = () => {
         document.querySelector(".details__body").classList.toggle("show-sidebar");
     };
-    const slideUp = () => {
-        console.log("oti lo");
-    };
+    // const slideUp = () => {
+    //     console.log("oti lo");
+    // };
 
     // details to use : name, created_at, description, forks, homepage, html_url, language, topics.map license, open_issues, owner {avatar_url followers_url following_url} stargazers_count, updated_at, watchers
 
@@ -59,16 +59,15 @@ const Details = () => {
                     <button
                         type="button"
                         className="details__body-toggle"
-                        onClick={toggleSidebar}
-                    >
+                        onClick={toggleSidebar}>
                         <GiHamburgerMenu />
                     </button>
                     <div className="details__body">
                         <aside className="details__body-left">
-                            <button type="button" className="slide_btn" onClick={slideUp}>
+                            {/* <button type="button" className="slide_btn">
                                 <span></span>
                                 <span></span>
-                            </button>
+                            </button> */}
                             <img src={details.owner.avatar_url} alt="mo-renike" />
                             <div className="details__body-owner">
                                 <h3>@{details.owner.login}</h3>

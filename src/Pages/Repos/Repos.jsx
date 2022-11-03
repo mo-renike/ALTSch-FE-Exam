@@ -22,7 +22,7 @@ const Repos = () => {
         };
         fetchRepos();
     }, [sort.order, sort.sort]);
-    //console.log(repos);
+    console.log(repos);
 
     // set dynamic reposPerPage value according to screen size
     if (window.innerWidth <= 768) {

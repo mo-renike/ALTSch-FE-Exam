@@ -25,7 +25,7 @@ const App = () => {
         {explode ? <Bomb /> : null}
         <Routes>
           <Route path="/" element={<Repos />} />
-          <Route path="/:repoName" element={<Details />} />
+          <Route path="repo/:repoName" element={<Details />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ErrorBoundary>

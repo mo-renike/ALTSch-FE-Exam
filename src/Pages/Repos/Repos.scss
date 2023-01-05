@@ -116,8 +116,70 @@
     justify-content: space-between;
     width: auto;
 
-    &-sort {
-      margin-right: 1rem;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    > * {
+      margin: 0.6rem;
+    }
+  }
+  &__search {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    input {
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      background-color: var(--secondary-color);
+      border: none;
+      margin: 5px 0;
+      color: var(--text-color);
+      width: 220px;
+    }
+    &_list {
+      background-color: var(--secondary-color);
+      border-radius: 5px;
+      padding: 0.3rem;
+      position: absolute;
+      top: 4.3rem;
+      width: 220px;
+      z-index: 10;
+      left: 0;
+      box-shadow: var(--box-shadow);
+      overflow-y: scroll;
+      max-height: 13rem;
+      height: auto;
+      &-item {
+        display: flex;
+        background-color: var(--primary-color);
+        padding: 0.5rem;
+        margin: 0.3rem 0;
+        justify-content: space-between;
+        border-radius: inherit;
+        align-items: center;
+        cursor: pointer;
+        animation: all 0.7s ease;
+        p {
+          opacity: 0.5;
+        }
+        font-weight: bold;
+        &:hover {
+          background-color: var(--accent-color);
+          p {
+            opacity: 1;
+            color: var(--primary-color);
+          }
+        }
+        img {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          margin-left: 0.5rem;
+        }
+      }
     }
   }
 }

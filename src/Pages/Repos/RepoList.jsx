@@ -3,10 +3,10 @@ import { AiOutlineStar } from "react-icons/ai";
 import "./Repos.scss";
 
 
-const RepoList = ({ repo }) => {
+const RepoList = ({ repo, user }) => {
     return (
         <a
-            href={`/repo/${repo.name}`}
+            href={`/${user}/${repo.name}`}
             className="repos__list-item"
             key={repo.id}
         >

@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../../Components/Loading/Loading";
 import "./Details.scss";
 import {
@@ -15,19 +15,19 @@ import {
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Details = () => {
-    const { repoName } = useParams();
+    const { username, repo } = useParams();
     const [details, setDetails] = React.useState([]);
 
     React.useEffect(() => {
         const fetchDetails = async () => {
             const response = await fetch(
-                `https://api.github.com/repos/mo-renike/${repoName}`
+                `https://api.github.com/repos/${username}/${repo}`
             );
             const data = await response.json();
             setDetails(data);
         };
         fetchDetails();
-        //console.log(details);
+        console.log(details);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -36,16 +36,13 @@ const Details = () => {
     const toggleSidebar = () => {
         document.querySelector(".details__body").classList.toggle("show-sidebar");
     };
-    // const slideUp = () => {
-    //     console.log("oti lo");
-    // };
 
     // details to use : name, created_at, description, forks, homepage, html_url, language, topics.map license, open_issues, owner {avatar_url followers_url following_url} stargazers_count, updated_at, watchers
 
     return (
         <div>
             <Helmet>
-                <title>{repoName}</title>
+                <title>{repo}</title>
                 <meta name="description" content={details.description} />
                 <meta
                     name="keywords"
@@ -62,13 +59,18 @@ const Details = () => {
                         onClick={toggleSidebar}>
                         <GiHamburgerMenu />
                     </button>
+
+                    <Link to="/" className="details__body-back">
+                        <span>&#8592;</span> Back to Repos
+                    </Link>
                     <div className="details__body">
+
                         <aside className="details__body-left">
                             {/* <button type="button" className="slide_btn">
                                 <span></span>
                                 <span></span>
                             </button> */}
-                            <img src={details.owner.avatar_url} alt="mo-renike" />
+                            <img src={details.owner.avatar_url} alt="img" />
                             <div className="details__body-owner">
                                 <h3>@{details.owner.login}</h3>
                                 <h4>Morenike Oyewole</h4>

@@ -23,11 +23,13 @@ const App = () => {
         resetKeys={[explode]}
       >
         {explode ? <Bomb /> : null}
-        <Routes>
-          <Route path="/" element={<Repos />} />
-          <Route path="repo/:repoName" element={<Details />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Repos />} />
+            <Route path="/:username/:repo" element={<Details />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </ErrorBoundary>
     </HelmetProvider>
   );

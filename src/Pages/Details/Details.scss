@@ -21,7 +21,10 @@
         }
       }
     }
-
+    &-back {
+      padding: 1rem;
+      // margin-top: 0.6rem;
+    }
     &.show-sidebar {
       grid-template-columns: 90% 5%;
 

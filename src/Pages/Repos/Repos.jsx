@@ -10,19 +10,57 @@ const Repos = () => {
         sort: "created",
         order: "desc",
     });
+    const [user, setUser] = useState("mo-renike");
+    const [search, setSearch] = useState("");
+    const [users, setUsers] = useState([]);
+    const [showUsers, setShowUsers] = useState(false);
+
+    const handleShowUsers = (e) => {
+        setSearch(e.target.value);
+        setShowUsers(true);
+        if (e.target.value === "") {
+            setShowUsers(false);
+        }
+    };
+    const handleUser = (e) => {
+        setUser(e.target.innerText);
+        setShowUsers(false);
+    };
 
     // fetch repos data from github api
     useEffect(() => {
         const fetchRepos = async () => {
             const response = await fetch(
-                `https://api.github.com/users/mo-renike/repos?sort=${sort.sort}&direction=${sort.order}&per_page=100`
+                `https://api.github.com/users/${user}/repos?sort=${sort.sort}&direction=${sort.order}&per_page=100`
             );
             const data = await response.json();
             setRepos(data);
         };
         fetchRepos();
-    }, [sort.order, sort.sort]);
-    console.log(repos);
+        // fetch users data from github api
+        const fetchUsers = async () => {
+            const res = await fetch(
+                `https://api.github.com/users?since=&per_page=100`
+            );
+            const data = await res.json();
+            setUsers(data);
+            console.log(users);
+        };
+        fetchUsers();
+        // set user to searched user after refresh
+
+        // const searchUser = () => {
+        //     const search = window.location.search;
+        //     const params = new URLSearchParams(search);
+        //     const user = params.get("user");
+        //     if (user) {
+        //         setUser(user);
+        //     } else {
+        //         setUser("mo-renike");
+        //     }
+        // };
+        // searchUser();
+    }, [sort.order, user, sort.sort, search, users]);
 
     // set dynamic reposPerPage value according to screen size
     if (window.innerWidth <= 768) {
@@ -62,7 +100,7 @@ const Repos = () => {
             </Helmet>
             {/* Loading State */}
             {currentRepos.length === 0 ? (
-                <Loading title="Loading Repos..." />
+                <Loading title={`Loading ${user}'s Repos ...`} />
             ) : (
                 <div>
                     <div className="repos__header">
@@ -99,14 +137,40 @@ const Repos = () => {
                             </div>
                         </div>
                     </div>
+                    {/* search github user and display their repos */}
+                    <div className="repos__search">
+                        <p>Enter github username: </p>
+                        <input type="text" onChange={handleShowUsers} />
+
+                        {showUsers && (
+                            // check if users match search
+                            <div className="repos__search_list">
+                                {users
+                                    .filter((user) =>
+                                        user.login.toLowerCase().includes(search.toLowerCase())
+                                    )
+                                    .map((user) => (
+                                        <div
+                                            className="repos__search_list-item"
+                                            onClick={handleUser}
+                                        >
+                                            <p>@{user.login}</p>
+                                            <img src={user.avatar_url} alt="img" />
+                                        </div>
+                                    ))}{" "}
+                            </div>
+                        )}
+                    </div>
                     {/* display repos */}
                     <div className="repos__list">
-                        {currentRepos.map((repo) => {
-                            return (
-                                <RepoList key={repo.id} repo={repo} />
-                            );
-                        })}
-                    </div>{" "}
+                        {currentRepos ? (
+                            currentRepos.map((repo) => {
+                                return <RepoList key={repo.id} user={user} repo={repo} />;
+                            })
+                        ) : (
+                            <Loading />
+                        )}
+                    </div>
                     {/* import pagination component */}
                     <Pagination
                         repos={repos}
